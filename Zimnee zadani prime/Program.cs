@@ -2,9 +2,11 @@
 {
     public class Program
     {
-        public void Main(string[] args)
+        static void Main(string[] args)
         {
-            ToDoListApp.Run();
+            ToDoListApp app = new ToDoListApp();
+            app.Run();
         }
     }
 }
+

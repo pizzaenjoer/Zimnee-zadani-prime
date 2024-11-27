@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace Zimnee_zadani_prime
 {
-    class ToDoListApp
+    public class ToDoListApp
     {
-        public ToDoListManager toDolistManager = new ToDoListManager();
+        private readonly ToDoListManager manager = new ToDoListManager();
 
-       
-        public static ToDoListManager GetToDoListManager(ToDoListManager toDoListManager)
-        {
-            return toDoListManager;
-        }
-
-        public static void Run(ToDoListManager toDoListManager)
+        public void Run()
         {
             while (true)
             {
@@ -28,20 +22,22 @@ namespace Zimnee_zadani_prime
                 Console.WriteLine("4. Экспортировать задачи в HTML");
                 Console.WriteLine("5. Выйти");
                 Console.Write("Выберите действие: ");
+
                 string choice = Console.ReadLine();
+
                 switch (choice)
                 {
                     case "1":
-                        toDoListManager.AddTask();
+                        manager.AddTask();
                         break;
                     case "2":
-                        toDoListManager.RemoveTask();
+                        manager.RemoveTask();
                         break;
                     case "3":
-                        toDoListManager.ShowTasks();
+                        manager.ShowTasks();
                         break;
                     case "4":
-                        toDoListManager.ExportToHtml();
+                        manager.ExportToHtml();
                         break;
                     case "5":
                         return;
@@ -53,9 +49,5 @@ namespace Zimnee_zadani_prime
             }
         }
 
-        internal static void Run()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

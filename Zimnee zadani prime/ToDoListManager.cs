@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zimnee_zadani_prime
 {
-     class ToDoListManager
+     public class ToDoListManager
     {
-        public Dictionary<DateTime, List<string>> toDoList = new();
+        private readonly Dictionary<DateTime, List<string>> toDoList = new();
 
         public void AddTask()
         {
@@ -41,6 +41,7 @@ namespace Zimnee_zadani_prime
                 {
                     Console.WriteLine($"{i + 1}. {toDoList[date][i]}");
                 }
+
                 Console.Write("Введите номер выполненной задачи: ");
                 if (int.TryParse(Console.ReadLine(), out int taskIndex) && taskIndex > 0 && taskIndex <= toDoList[date].Count)
                 {
@@ -51,6 +52,7 @@ namespace Zimnee_zadani_prime
                 {
                     Console.WriteLine("Некорректный номер задачи. Нажмите Enter для продолжения.");
                 }
+
                 if (toDoList[date].Count == 0)
                 {
                     toDoList.Remove(date);
@@ -96,6 +98,7 @@ namespace Zimnee_zadani_prime
                 writer.WriteLine("</head>");
                 writer.WriteLine("<body>");
                 writer.WriteLine("<h1>Список дел</h1>");
+
                 foreach (var entry in toDoList)
                 {
                     writer.WriteLine($"<h2>{entry.Key:yyyy-MM-dd}</h2>");
@@ -106,9 +109,11 @@ namespace Zimnee_zadani_prime
                     }
                     writer.WriteLine("</ul>");
                 }
+
                 writer.WriteLine("</body>");
                 writer.WriteLine("</html>");
             }
+
             Console.WriteLine($"Задачи экспортированы в файл {fileName}. Нажмите Enter для продолжения.");
             Console.ReadLine();
         }
