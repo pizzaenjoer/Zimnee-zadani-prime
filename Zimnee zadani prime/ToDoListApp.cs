@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,14 @@ namespace Zimnee_zadani_prime
 {
     public class ToDoListApp
     {
-        private readonly ToDoListManager manager = new ToDoListManager();
+        private readonly ToDoListManager manager; //Управление задачами
+        private readonly ToDoExport exporter;    //Экспорт задач
+
+        public ToDoListApp()
+        {
+            manager = new ToDoListManager();
+            exporter = new ToDoExport();
+        }
 
         public void Run()
         {
@@ -37,10 +45,10 @@ namespace Zimnee_zadani_prime
                         manager.ShowTasks();
                         break;
                     case "4":
-                        manager.ExportToHtml();
+                        ExportToHtml(); // Вызов метода экспорта
                         break;
                     case "5":
-                        return;
+                        return; // Завершение программы
                     default:
                         Console.WriteLine("Некорректный выбор. Нажмите Enter и попробуйте снова.");
                         Console.ReadLine();
@@ -49,5 +57,12 @@ namespace Zimnee_zadani_prime
             }
         }
 
+        // Вызов экспорта задач через ToDoExport
+        private void ExportToHtml()
+        {
+            // Получение списка задач из ToDoListManager
+            var tasks = manager.GetTasks();
+            exporter.ExportToHtml(tasks);
+        }
     }
 }

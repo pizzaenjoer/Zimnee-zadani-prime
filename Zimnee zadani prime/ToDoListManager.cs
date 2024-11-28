@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zimnee_zadani_prime
 {
-     public class ToDoListManager
+    public class ToDoListManager
     {
         private readonly Dictionary<DateTime, List<string>> toDoList = new();
 
@@ -84,38 +84,11 @@ namespace Zimnee_zadani_prime
             Console.ReadLine();
         }
 
-        public void ExportToHtml()
+        //Новый метод для получения задач
+        public Dictionary<DateTime, List<string>> GetTasks()
         {
-            string fileName = "ToDoList.html";
-            using (StreamWriter writer = new StreamWriter(fileName))
-            {
-                writer.WriteLine("<!DOCTYPE html>");
-                writer.WriteLine("<html lang=\"en\">");
-                writer.WriteLine("<head>");
-                writer.WriteLine("<meta charset=\"UTF-8\">");
-                writer.WriteLine("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                writer.WriteLine("<title>Список дел</title>");
-                writer.WriteLine("</head>");
-                writer.WriteLine("<body>");
-                writer.WriteLine("<h1>Список дел</h1>");
-
-                foreach (var entry in toDoList)
-                {
-                    writer.WriteLine($"<h2>{entry.Key:yyyy-MM-dd}</h2>");
-                    writer.WriteLine("<ul>");
-                    foreach (var task in entry.Value)
-                    {
-                        writer.WriteLine($"<li>{task}</li>");
-                    }
-                    writer.WriteLine("</ul>");
-                }
-
-                writer.WriteLine("</body>");
-                writer.WriteLine("</html>");
-            }
-
-            Console.WriteLine($"Задачи экспортированы в файл {fileName}. Нажмите Enter для продолжения.");
-            Console.ReadLine();
+            return toDoList;
         }
+
     }
 }
