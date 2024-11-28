@@ -11,6 +11,8 @@ namespace Zimnee_zadani_prime
         public void ExportToHtml(Dictionary<DateTime, List<string>> toDoList)
         {
             string fileName = "ToDoList.html";
+            string fullPath = Path.GetFullPath(fileName);
+
             using (StreamWriter writer = new StreamWriter(fileName))
             {
                 writer.WriteLine("<!DOCTYPE html>");
@@ -38,7 +40,8 @@ namespace Zimnee_zadani_prime
                 writer.WriteLine("</html>");
             }
 
-            Console.WriteLine($"Задачи экспортированы в файл {fileName}. Нажмите Enter для продолжения.");
+            Console.WriteLine($"Задачи экспортированы в файл {fullPath}");
+            Console.WriteLine(" Нажмите Enter для продолжения.");
             Console.ReadLine();
         }
     }
