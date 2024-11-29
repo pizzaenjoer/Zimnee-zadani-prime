@@ -20,6 +20,7 @@ namespace Zimnee_zadani_prime
 
         public void Run()
         {
+            ToDoConsoleOperations consoleOperations = new ToDoConsoleOperations(manager);
             while (true)
             {
                 Console.Clear();
@@ -39,7 +40,7 @@ namespace Zimnee_zadani_prime
                         manager.AddTask();
                         break;
                     case "2":
-                        manager.RemoveTask();
+                        consoleOperations.HandleRemoveTask();
                         break;
                     case "3":
                         manager.ShowTasks();

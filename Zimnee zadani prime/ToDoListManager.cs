@@ -31,38 +31,19 @@ namespace Zimnee_zadani_prime
             Console.ReadLine();
         }
 
-        public void RemoveTask()
+        public bool RemoveTask(DateTime date, int taskIndex)
         {
-            Console.Write("Введите дату задачи для удаления (ГГГГ-ММ-ДД): ");
-            if (DateTime.TryParse(Console.ReadLine(), out DateTime date) && toDoList.ContainsKey(date))
+            if (toDoList.ContainsKey(date) && taskIndex > 0 && taskIndex <= toDoList[date].Count)
             {
-                Console.WriteLine("Задачи на указанную дату:");
-                for (int i = 0; i < toDoList[date].Count; i++)
-                {
-                    Console.WriteLine($"{i + 1}. {toDoList[date][i]}");
-                }
-
-                Console.Write("Введите номер выполненной задачи: ");
-                if (int.TryParse(Console.ReadLine(), out int taskIndex) && taskIndex > 0 && taskIndex <= toDoList[date].Count)
-                {
-                    toDoList[date].RemoveAt(taskIndex - 1);
-                    Console.WriteLine("Задача удалена. Нажмите Enter для продолжения.");
-                }
-                else
-                {
-                    Console.WriteLine("Некорректный номер задачи. Нажмите Enter для продолжения.");
-                }
-
+                toDoList[date].RemoveAt(taskIndex - 1);
+                                
                 if (toDoList[date].Count == 0)
                 {
                     toDoList.Remove(date);
                 }
+               return true;
             }
-            else
-            {
-                Console.WriteLine("Задачи на указанную дату не найдены. Нажмите Enter для продолжения.");
-            }
-            Console.ReadLine();
+            return false;
         }
 
         public void ShowTasks()
