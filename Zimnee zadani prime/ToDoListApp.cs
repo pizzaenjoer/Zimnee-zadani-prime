@@ -37,7 +37,7 @@ namespace Zimnee_zadani_prime
                 switch (choice)
                 {
                     case "1":
-                        manager.AddTask();
+                        manager.AddTasks();
                         break;
                     case "2":
                         consoleOperations.HandleRemoveTask();
