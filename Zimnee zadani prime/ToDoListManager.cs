@@ -10,7 +10,7 @@ namespace Zimnee_zadani_prime
     {
         private readonly Dictionary<DateTime, List<string>> toDoList = new();
 
-        public void AddTasks()
+        public void AddTask()
         {
             Console.Write("Введите дату задачи (ГГГГ-ММ-ДД): ");
             if (DateTime.TryParse(Console.ReadLine(), out DateTime date))
